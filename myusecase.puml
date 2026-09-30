@@ -1,0 +1,43 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+:Сотрудник: as Employee
+:Пользователь системы: as User
+:Администратор: as Admin
+
+User <|-- Employee
+User <|-- Admin
+
+rectangle "Система учета оборудования" {
+    (Подать заявку\nна ремонт) as UC_RepairReport
+    (Просмотреть\nзакрепленное\nоборудование) as UC_ViewMyEquip
+
+    (Вход в систему) as UC_Login
+    (Просмотр\nоборудования) as UC_ViewAllEquip
+
+    (Обработать\nзаявку на\nремонт) as UC_ProcessRepair
+    (Оформить выдачу\nоборудования) as UC_GiveEquip
+    (Внести технику\nв базу) as UC_AddEquip
+    (Внести сотрудника\nв базу) as UC_AddEmployee
+
+    (Изменить статус\nустройства) as UC_ChangeStatus
+    (Проверить\nдоступность на\nскладе) as UC_CheckStock
+}
+
+Employee --> UC_RepairReport
+Employee --> UC_ViewMyEquip
+
+User --> UC_Login
+User --> UC_ViewAllEquip
+
+Admin --> UC_ProcessRepair
+Admin --> UC_GiveEquip
+Admin --> UC_AddEquip
+Admin --> UC_AddEmployee
+
+UC_ProcessRepair .> UC_ChangeStatus : <<include>>
+UC_GiveEquip .> UC_ChangeStatus : <<include>>
+UC_GiveEquip .> UC_CheckStock : <<include>>
+
+@enduml
