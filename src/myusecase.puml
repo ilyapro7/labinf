@@ -25,16 +25,16 @@ rectangle "Система учета оборудования" {
     (Проверить\nдоступность на\nскладе) as UC_CheckStock
 }
 
-Employee --> UC_RepairReport
-Employee --> UC_ViewMyEquip
+Employee -- UC_RepairReport
+Employee -- UC_ViewMyEquip
 
-User --> UC_Login
-User --> UC_ViewAllEquip
+User -- UC_Login
+User -- UC_ViewAllEquip
 
-Admin --> UC_ProcessRepair
-Admin --> UC_GiveEquip
-Admin --> UC_AddEquip
-Admin --> UC_AddEmployee
+Admin -- UC_ProcessRepair
+Admin -- UC_GiveEquip
+Admin -- UC_AddEquip
+Admin -- UC_AddEmployee
 
 UC_ProcessRepair .> UC_ChangeStatus : <<include>>
 UC_GiveEquip .> UC_ChangeStatus : <<include>>
