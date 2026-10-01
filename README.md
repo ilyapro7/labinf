@@ -23,3 +23,7 @@
   # _Диаграмма Use case_
 ![Схема использования системы](https://github.com/ilyapro7/labinf/blob/main/images/myusecase.png?raw=true)
 
+## *Запуск программы*
+Перейти в корневую папку проекта и вписать:
+
+python main.py
