@@ -24,6 +24,6 @@
 ![Схема использования системы](https://github.com/ilyapro7/labinf/blob/main/images/myusecase.png?raw=true)
 
 ## *Запуск программы*
-Перейти в корневую папку проекта и вписать:
+Перейти в корневую папку проекта в терминале и вписать:
 
-python main.py
+python src/main.py
