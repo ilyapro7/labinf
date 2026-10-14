@@ -29,7 +29,7 @@
 python src/main.py
 
 
-## *Er-диаграмма базы данных "Учет оборудования в организации"
+## *Er-диаграмма базы данных "Учет оборудования в организации"*
 ![Схема базы данных](https://github.com/ilyapro7/labinf/blob/main/images/erd_schema.png?raw=true)
 
 
