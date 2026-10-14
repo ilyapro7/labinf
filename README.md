@@ -27,3 +27,9 @@
 Перейти в корневую папку проекта в терминале и вписать:
 
 python src/main.py
+
+
+## *Er-диаграмма базы данных "Учет оборудования в организации"
+![Схема базы данных](https://github.com/ilyapro7/labinf/blob/main/images/erd_schema.png?raw=true)
+
+
