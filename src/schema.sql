@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS repair_requests;
 DROP TABLE IF EXISTS equipment;
 DROP TABLE IF EXISTS employees;
 DROP TABLE IF EXISTS statuses;
+DROP TABLE IF EXISTS roles;
 
 CREATE TABLE statuses (
     status_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -21,7 +22,8 @@ CREATE TABLE equipment (
     model TEXT NOT NULL,
     serial_number TEXT NOT NULL UNIQUE,
     status_id INTEGER NOT NULL,
-    employee_id INTEGER, 
+    employee_id INTEGER,
+    userrole INTEGER,
     FOREIGN KEY (status_id) REFERENCES statuses (status_id),
     FOREIGN KEY (employee_id) REFERENCES employees (employee_id)
 );
@@ -33,6 +35,13 @@ CREATE TABLE repair_requests (
     employee_id INTEGER NOT NULL,
     FOREIGN KEY (equipment_id) REFERENCES equipment (equipment_id),
     FOREIGN KEY (employee_id) REFERENCES employees (employee_id)
+);
+
+CREATE TABLE roles (
+    userrole INTEGER PRIMARY KEY,
+    name TEXT NOT NULL UNIQUE,
+    FOREIGN KEY (userrole) REFERENCES employees (userrole)
+
 );
 
 
@@ -48,4 +57,9 @@ INSERT INTO employees (full_name, login, password_hash) VALUES
 INSERT INTO equipment (model, serial_number, status_id, employee_id) VALUES 
 ('Ноутбук Lenovo ThinkPad T14', 'SN-LNV-2026-X1', 2, 1), 
 ('Монитор Dell UltraSharp U2422H', 'SN-DELL-US-77', 2, 1),  
-('Ноутбук ASUS Zenbook 14', 'SN-ASUS-ZB-991', 3, NULL); 
+('Ноутбук ASUS Zenbook 14', 'SN-ASUS-ZB-991', 3, NULL);
+
+INSERT INTO roles (userrole, name) VALUES
+(1, admin),
+(2, employee),
+
