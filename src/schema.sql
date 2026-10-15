@@ -14,6 +14,8 @@ CREATE TABLE employees (
     full_name TEXT NOT NULL,
     login TEXT NOT NULL UNIQUE,
     password_hash TEXT NOT NULL
+    userrole INTEGER
+
 );
 
 
@@ -23,7 +25,6 @@ CREATE TABLE equipment (
     serial_number TEXT NOT NULL UNIQUE,
     status_id INTEGER NOT NULL,
     employee_id INTEGER,
-    userrole INTEGER,
     FOREIGN KEY (status_id) REFERENCES statuses (status_id),
     FOREIGN KEY (employee_id) REFERENCES employees (employee_id)
 );
