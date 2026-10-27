@@ -34,6 +34,7 @@ CREATE TABLE repair_requests (
     request_id INTEGER PRIMARY KEY AUTOINCREMENT,
     equipment_id INTEGER NOT NULL,
     employee_id INTEGER NOT NULL,
+    defect_name TEXT NOT NULL,
     FOREIGN KEY (equipment_id) REFERENCES equipment (equipment_id),
     FOREIGN KEY (employee_id) REFERENCES employees (employee_id)
 );
