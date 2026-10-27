@@ -13,9 +13,8 @@ CREATE TABLE employees (
     employee_id INTEGER PRIMARY KEY AUTOINCREMENT,
     full_name TEXT NOT NULL,
     login TEXT NOT NULL UNIQUE,
-    password_hash TEXT NOT NULL
-    userrole INTEGER
-
+    password_hash TEXT NOT NULL,
+    userrole INTEGER NOT NULL
 );
 
 
