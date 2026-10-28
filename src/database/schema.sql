@@ -9,12 +9,19 @@ CREATE TABLE statuses (
     name TEXT NOT NULL UNIQUE
 );
 
+CREATE TABLE roles (
+    userrole INTEGER PRIMARY KEY,
+    name TEXT NOT NULL UNIQUE
+
+);
+
 CREATE TABLE employees (
     employee_id INTEGER PRIMARY KEY AUTOINCREMENT,
     full_name TEXT NOT NULL,
     login TEXT NOT NULL UNIQUE,
     password_hash TEXT NOT NULL,
-    userrole INTEGER NOT NULL
+    userrole INTEGER NOT NULL,
+    FOREIGN KEY (userrole) REFERENCES roles (userrole)
 );
 
 
@@ -38,12 +45,6 @@ CREATE TABLE repair_requests (
     FOREIGN KEY (employee_id) REFERENCES employees (employee_id)
 );
 
-CREATE TABLE roles (
-    userrole INTEGER PRIMARY KEY,
-    name TEXT NOT NULL UNIQUE,
-    FOREIGN KEY (userrole) REFERENCES employees (userrole)
-
-);
 
 
 INSERT INTO statuses (name) VALUES 
@@ -51,16 +52,18 @@ INSERT INTO statuses (name) VALUES
 ('Выдано'), 
 ('В ремонте');
 
-INSERT INTO employees (full_name, login, password_hash) VALUES 
-('Иванов Иван Иванович', 'Ivanov_ii', 'e150a1ec81e8e93e1eae2c3a77e66ec6dbd6a3b460f89c1d08aecf422ee401a0'), 
-('Петров Петр Петрович', 'petrushka_pp', '9bfe77ed73853e942523711df9636ec2c1b42faa1b538cbb4449d1d89194a460');
+INSERT INTO roles (userrole, name) VALUES
+(1, 'admin'),
+(2, 'employee');
+
+INSERT INTO employees (full_name, login, password_hash, userrole) VALUES
+('Иванов Иван Иванович', 'Ivanov_ii', 'admin', 1),
+('Петров Петр Петрович', 'petrushka_pp', '12345', 2);
 
 INSERT INTO equipment (model, serial_number, status_id, employee_id) VALUES 
-('Ноутбук Lenovo ThinkPad T14', 'SN-LNV-2026-X1', 2, 1), 
-('Монитор Dell UltraSharp U2422H', 'SN-DELL-US-77', 2, 1),  
+('Ноутбук Lenovo ThinkPad T14', 'SN-LNV-2026-X1', 2, 2),
+('Монитор Dell UltraSharp U2422H', 'SN-DELL-US-77', 2, 2),
 ('Ноутбук ASUS Zenbook 14', 'SN-ASUS-ZB-991', 3, NULL);
 
-INSERT INTO roles (userrole, name) VALUES
-(1, admin),
-(2, employee),
+
 

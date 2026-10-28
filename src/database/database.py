@@ -1,8 +1,7 @@
 import sqlite3
 from pathlib import Path
 
-
-DB_NAME = "library.db"
+DB_NAME = "equipment.db"
 
 
 def get_connection():
@@ -12,11 +11,15 @@ def get_connection():
 
 
 def init_db():
-
-    if Path(DB_NAME).exists():
-        return
-
     conn = get_connection()
+    cursor = conn.cursor()
+    try:
+        cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='employees';")
+        if cursor.fetchone():
+            conn.close()
+            return
+    except sqlite3.Error:
+        pass
 
     sql_path = (
         Path(__file__).parent
@@ -28,11 +31,9 @@ def init_db():
         "r",
         encoding="utf-8"
     ) as file:
-
         sql_script = file.read()
 
     conn.executescript(sql_script)
-
     conn.commit()
     conn.close()
 
