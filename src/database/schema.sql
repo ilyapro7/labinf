@@ -57,8 +57,8 @@ INSERT INTO roles (userrole, name) VALUES
 (2, 'employee');
 
 INSERT INTO employees (full_name, login, password_hash, userrole) VALUES
-('Иванов Иван Иванович', 'Ivanov_ii', 'admin', 1),
-('Петров Петр Петрович', 'petrushka_pp', '12345', 2);
+('Иванов Иван Иванович', 'Ivanov_ii', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 1),
+('Петров Петр Петрович', 'petrushka_pp', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 2);
 
 INSERT INTO equipment (model, serial_number, status_id, employee_id) VALUES 
 ('Ноутбук Lenovo ThinkPad T14', 'SN-LNV-2026-X1', 2, 2),
